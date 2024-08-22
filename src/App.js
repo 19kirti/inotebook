@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import About from './components/About';
+import NoteState from '..context/notes/NoteState'
 
 function App() {
   return (
     <>
-
+    <NoteState>
     <Router>
     <NavBar/>
 
@@ -19,7 +20,7 @@ function App() {
       </Routes>
 
     </Router>
-
+    </NoteState>
 
    </>
 
