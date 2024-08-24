@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link, useLocation} from "react-router-dom"
+import {Link, useLocation, useNavigate} from "react-router-dom"
 import { useEffect } from 'react'
 
 const NavBar = () => {
@@ -7,6 +7,13 @@ const NavBar = () => {
   useEffect(() => {
     console.log(location.pathname);
   },  [location]);
+
+let navigate = useNavigate();
+
+  const handleLogout = ()=>{
+    localStorage.removeItem('token');
+    navigate("/login");
+  }
 
   return (
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -24,10 +31,12 @@ const NavBar = () => {
           <Link class= {`nav-link ${location.pathname==="/about" ? "active" : ""}`} to="/about">About</Link>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      
+        { !localStorage.getItem('token') ? <form class="d-flex" role="search"> 
+      <Link class="btn btn-primary mx-2" to="/login" role="button">LogIn</Link>
+      <Link class="btn btn-primary mx-2" to="/signup" role="button">SignUp</Link>
+      </form> : <button class="btn btn-primary mx-2" onClick={handleLogout} >LogOut</button>}
+
     </div>
   </div>
 </nav>

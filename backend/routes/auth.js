@@ -16,10 +16,12 @@ router.post('/createuser', [
 ],
 
     async (req, res) => {
+        let success = false;
+
         //if there are errors, return bad requests and the errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({ success, errors: errors.array() });
         }
         //check if the user with this email already exists or not
 
@@ -27,7 +29,7 @@ router.post('/createuser', [
             let user = await User.findOne({ email: req.body.email });
             console.log(user)
             if (user) {
-                return res.status(400).json({ error: "User already exists with this email" });
+                return res.status(400).json({success, error: "User already exists with this email" });
             }
 
             const salt = await bcrypt.genSalt(10);
@@ -57,7 +59,8 @@ router.post('/createuser', [
 
             const authToken = jwt.sign(data, JWT_SECRET);
             console.log(authToken);
-            res.json({ authToken });
+            success = true;
+            res.json({success, authToken });
 
             //res.json(user);
         }
@@ -76,6 +79,7 @@ router.post('/login', [
     body('email', 'Invalid email').isEmail(),
     body('password', 'Password cannot be blank').exists(),
 ],async (req, res) => {
+        let success = false;
         //if there are errors, return bad requests and the errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -87,12 +91,14 @@ router.post('/login', [
         try {
             let user = await User.findOne({ email });
             if (!user) {
-                return res.status(400).json({ error: "Please try to login with correct credentials" })
+                success = false;
+                return res.status(400).json({success, error: "Please try to login with correct credentials" })
             }
 
             const passwordCompare = await bcrypt.compare(password, user.password);
             if (!passwordCompare) {
-                return res.status(400).json({ error: "Please try to login with correct credentials" })
+                success = false;
+                return res.status(400).json({ success, error: "Please try to login with correct credentials" })
             }
 
             const data = {
@@ -103,7 +109,8 @@ router.post('/login', [
 
             const authToken = jwt.sign(data, JWT_SECRET);
             console.log(authToken);
-            res.json({authToken});
+            success = true;
+            res.json({success, authToken});
 
         }
 
