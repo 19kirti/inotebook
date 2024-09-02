@@ -1,3 +1,41 @@
+## iTask- The To-Do-App
+
+
+## Description
+iNoteBook - The To-Do-Application is a web-based application that is created using create-react-app, which allows you to manage your notes.
+
+## Features
+- Allows you to add, edit, and remove the notes.
+- Provides you with the proper alerts while you make any changes to your notes.
+- Interactive UI and easy to use.
+  
+## Technologies Used
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+- React
+- Node.js
+- Express
+- MongoDB
+
+## Installation
+1. Clone the repository: `git clone https://github.com/19kirti/inotebook.git`
+2. Navigate to the project directory: `cd inotebook`
+3. Start the application: `npm start`
+
+## How to Use?
+1. Open your web browser and navigate to `http://localhost:5173`
+2. Enter the desired note and click on ADD to add it to the list.
+3. Click on EDIT to make any changes.
+4. Click on REMOVE to remove it from the list.
+
+## Contributions
+Welcome for the contributions! Please open an issue or submit a pull request if you have any suggestions or improvements.
+
+## License
+This project is licensed under the [MIT License](LICENSE).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
