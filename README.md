@@ -1,4 +1,4 @@
-## iTask- The To-Do-App
+## iNoteBook- The To-Do-Application
 
 ![image](https://github.com/user-attachments/assets/cd569da7-7070-4c4d-86d9-22aa0c6c6933)
 
@@ -30,7 +30,7 @@ iNoteBook - The To-Do-Application is a web-based application that is created usi
 1. Open your web browser and navigate to `http://localhost:5173`
 2. Enter the desired note and click on ADD to add it to the list.
 3. Click on EDIT to make any changes.
-4. Click on REMOVE to remove it from the list.
+4. Click on DELETE to remove it from the list.
 
 ## Contributions
 Welcome for the contributions! Please open an issue or submit a pull request if you have any suggestions or improvements.
